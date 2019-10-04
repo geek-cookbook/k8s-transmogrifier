@@ -30,3 +30,10 @@ for i in `grep -liEr "kind: Deployment|kind: Daemonset|kind: Statefulset|kind: R
 		sed -i -e "s|apps/v1beta2|apps/v1|" $i
 	fi
 done
+
+for i in `grep -liEr "kind: PodSecurityPolicy" $TARGET`; do
+	if [[ `grep -E "extensions/v1beta1|apps/v1beta2" $i` ]]; then
+		echo "Deprecated API found in [$i].. Transmogrifying..."
+		sed -i -e "s|extensions/v1beta1|policy/v1beta1|" $i
+	fi
+done

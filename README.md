@@ -11,7 +11,7 @@ Point the script at your kubernetes manifests, as follows:
 The output will indicate whether the YAMLs needed to be updated for the deprecated APIs:
 
 ```
-root@cn1:~# /tmp/upgrade.sh /tmp/ansible.bbGF94temp/prometheus/templates/
+root@cn1:~# /tmp/transmogrify_for_k8s_1.16.sh /tmp/ansible.bbGF94temp/prometheus/templates/
 Deprecated API found in [/tmp/ansible.bbGF94temp/prometheus/templates/kube-state-metrics-deployment.yaml].. Transmogrifying...
 Deprecated API found in [/tmp/ansible.bbGF94temp/prometheus/templates/alertmanager-deployment.yaml].. Transmogrifying...
 Deprecated API found in [/tmp/ansible.bbGF94temp/prometheus/templates/node-exporter-daemonset.yaml].. Transmogrifying...
@@ -22,6 +22,6 @@ root@cn1:~#
 When the script is run a second time, if no deprecated APIs are found, no output is displayed:
 
 ``` 
-root@cn1:~# /tmp/upgrade.sh /tmp/ansible.bbGF94temp/prometheus/templates/
+root@cn1:~# /tmp/transmogrify_for_k8s_1.16.sh /tmp/ansible.bbGF94temp/prometheus/templates/
 root@cn1:~#
 ```

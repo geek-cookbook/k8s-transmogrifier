@@ -24,10 +24,11 @@ fi
 
 # Find all depreciation targets
 for i in `grep -liEr "kind: Deployment|kind: Daemonset|kind: Statefulset|kind: ReplicaSet" $TARGET`; do
-	if [[ `grep -E "extensions/v1beta1|apps/v1beta2" $i` ]]; then
+	if [[ `grep -E "extensions/v1beta1|apps/v1beta2|apps/v1beta1" $i` ]]; then
 		echo "Deprecated API found in [$i].. Transmogrifying..."
 		sed -i -e "s|extensions/v1beta1|apps/v1|" $i
 		sed -i -e "s|apps/v1beta2|apps/v1|" $i
+		sed -i -e "s|apps/v1beta1|apps/v1|" $i
 	fi
 done
 
